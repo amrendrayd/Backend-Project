@@ -12,5 +12,8 @@
     "backend"
   ],
   "author": "Amrendra Yadav",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
 }
