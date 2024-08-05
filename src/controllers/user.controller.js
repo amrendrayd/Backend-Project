@@ -18,7 +18,7 @@ const registerUser = asyncHaldler (async (req, res) => {
     // return response
 
     const {fullName, email, username, password} = req.body
-    console.log("email", email);
+    // console.log("email", email);
 
     // if(fullName === "") {
     //     throw new ApiError(400, "fullname is required")
@@ -30,7 +30,7 @@ const registerUser = asyncHaldler (async (req, res) => {
         throw new ApiError(400, "All fields are required")
     }
 
-    const existedUser = User.findOne({
+    const existedUser = await User.findOne({
         $or: [{username}, {email}]
     })
 
@@ -39,7 +39,10 @@ const registerUser = asyncHaldler (async (req, res) => {
     }
 
     const avatarLocalPath = req.files?.avatar[0]?.path
-    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    // const coverImageLocalPath = req.files?.coverImage[0]?.path;
+
+    let coverImageLocalPath;
+    if(req.files && Array.isArray(req.files.coverImageLocalPath = req.files.coverImage[0].path))
 
     if(!avatarLocalPath){
         throw new ApiError(400, "Avatar file is required")
