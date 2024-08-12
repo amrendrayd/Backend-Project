@@ -250,7 +250,7 @@ const getCurrentUser = asyncHaldler(async(req, res) => {
     try {
         return res
         .status(200)
-        .json(200, req.user, "Current user fetched successfully")
+        .json(new ApiResponse(200, req.user, "Current user fetched successfully"))
 
     } catch (error) {
         throw new ApiError(401, error?.message)
